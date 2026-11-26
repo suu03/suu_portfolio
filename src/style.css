@@ -46,6 +46,7 @@ img, video { display: block; max-width: 100%; }
 .shell { width: min(90%, 1376px); margin-inline: auto; }
 .header, .footer { display: flex; align-items: center; justify-content: space-between; padding-block: 24px; }
 .header { gap: 16px; border-bottom: 1px solid var(--line); }
+.brand span { color: var(--orange); }
 .brand { font-family: "Nova Round", system-ui, sans-serif; font-size: 1.8rem; font-weight: 400; line-height: 1; }
 nav, .footer { font-size: .875rem; }
 nav { display: flex; gap: clamp(20px, 4vw, 48px); }
@@ -88,18 +89,18 @@ button.preview:is(:hover, :focus-visible) + .project-info h3,
   font-weight: 400;
   line-height: 1.08;
 }
-.hero-title { display: grid; justify-items: center; margin: 0; }
+.hero-title { display: grid; justify-items: center; gap: clamp(8px, 2vw, 22px); margin: 0; }
 .hero-title .title-name {
   position: relative;
   padding-bottom: .24em;
   font-family: "Nova Round", system-ui, sans-serif;
-  font-size: clamp(1.8rem, 7.5vw, 5.5rem);
+  font-size: clamp(2.7rem, 6vw, 5.5rem);
 }
 .name-underline {
   position: absolute;
   left: 50%;
-  bottom: -.18em;
-  width: 100%;
+  bottom: 0;
+  width: 145%;
   translate: -50% 0;
   fill: none;
   stroke: #00b2ff;
@@ -107,6 +108,7 @@ button.preview:is(:hover, :focus-visible) + .project-info h3,
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+.hero-title .title-portfolio { font-size: clamp(2.5rem, 9vw, 8rem); }
 .display-title { font-size: clamp(2.35rem, 6vw, 5.1rem); }
 #about-title { font-size: clamp(2.35rem, 5.5vw, 4.5rem); }
 #stack-title { font-size: clamp(2.1rem, 4.7vw, 3.9rem); margin-bottom: clamp(26px, 4vw, 48px); }

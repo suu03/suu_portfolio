@@ -214,7 +214,7 @@ function App() {
     <>
       <div className="intro" id="top">
         <header className="shell header">
-          <a className="brand" href="#top">suu_portfolio</a>
+          <a className="brand" href="#top">Suu<span>.</span></a>
           <nav aria-label={copy.navigation}>
             <a href="#about">{copy.about}</a>
             <a href="#stack">{copy.stack}</a>
@@ -256,7 +256,7 @@ function App() {
         <section className="shell hero" aria-labelledby="hero-title">
           <h1 className="hero-title" id="hero-title">
             <span className="title-name">
-              suu_portfolio
+              Suu
               <svg className="name-underline" viewBox="0 0 236 27" aria-hidden="true">
                 <path
                   d="M3 17 C29 7 70 3 125 4 S227 4 233 10 C238 15 158 14 105 14 C91 14 80 14 73 15 C108 15 163 14 204 23"
@@ -264,6 +264,7 @@ function App() {
                 />
               </svg>
             </span>
+            <span className="title-portfolio" lang="en">Portfolio</span>
           </h1>
         </section>
       </div>

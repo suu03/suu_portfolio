@@ -37,7 +37,7 @@ export const locales = {
     },
     language: '表示言語', navigation: 'メインメニュー',
     work: '制作実績', about: '自己紹介', contact: 'お問い合わせ',
-    stack: '主なスキル',
+    stack: '主なスキル', portfolio: 'ポートフォリオ',
     profession: 'フロントエンドエンジニア / UIデザイナー',
     projectDetails: (title) => `${title}の詳細を見る`,
     filters: { all: 'すべて', personal: '個人開発', ui: 'UIデザイン', system: 'システム開発' },
@@ -54,7 +54,7 @@ export const locales = {
       ['スターアップ企業', 'オークションアプリのUI/UXデザイン'],
     ],
     skillGroups: { Frontend: 'フロントエンド', Frameworks: 'フレームワーク・ライブラリ', Backend: 'バックエンド', Cloud: 'クラウド', Design: 'デザイン' },
-    meta: 'suu_portfolioでは、開発プロジェクトと経歴を紹介します',
+    meta: 'Suuのポートフォリオ開発プロジェクトと経歴を紹介します',
   },
   en: {
     overviewHeading: 'Overview',
@@ -89,7 +89,7 @@ export const locales = {
     stackToolNames: { 'JavaScript（設定ファイル）': 'JavaScript (configuration files)', 'ブラウザの localStorage': 'Browser localStorage', 'JavaScript（JSX）': 'JavaScript (JSX)', 'Twilio（SMS認証）': 'Twilio (SMS verification)', 'Capacitor（iOS／Android）': 'Capacitor (iOS / Android)', 'Axios（依存関係に記載）': 'Axios (listed in dependencies)', 'pgvector（ベクトル類似検索）': 'pgvector (vector similarity search)', 'TypeScript（TSX）': 'TypeScript (TSX)', 'GLSL（シェーダー）': 'GLSL (shaders)' },
     language: 'Language', navigation: 'Main navigation',
     work: 'Work', about: 'About', contact: 'Contact',
-    stack: 'My Stack',
+    stack: 'My Stack', portfolio: 'Portfolio',
     profession: 'Frontend Engineer / UI Designer',
     projectDetails: (title) => `View details for ${title}`,
     filters: { all: 'All', personal: 'Personal Projects', ui: 'UI Design', system: 'Systems Development' },
@@ -106,7 +106,7 @@ export const locales = {
       ['Startup', 'UI/UX design for an auction app'],
     ],
     skillGroups: { Frontend: 'Frontend', Frameworks: 'Frameworks & Libraries', Backend: 'Backend', Cloud: 'Cloud', Design: 'Design' },
-    meta: 'suu_portfolio showcases development projects and professional experience.',
+    meta: 'Suu’s portfolio, featuring development projects and professional experience.',
   },
   'zh-Hant': {
     overviewHeading: '概要',
@@ -141,7 +141,7 @@ export const locales = {
     stackToolNames: { 'JavaScript（設定ファイル）': 'JavaScript（設定檔）', 'ブラウザの localStorage': '瀏覽器 localStorage', 'JavaScript（JSX）': 'JavaScript（JSX）', 'Twilio（SMS認証）': 'Twilio（簡訊驗證）', 'Capacitor（iOS／Android）': 'Capacitor（iOS／Android）', 'Axios（依存関係に記載）': 'Axios（列於相依套件）', 'pgvector（ベクトル類似検索）': 'pgvector（向量相似度搜尋）', 'TypeScript（TSX）': 'TypeScript（TSX）', 'GLSL（シェーダー）': 'GLSL（著色器）' },
     language: '顯示語言', navigation: '主選單',
     work: '作品', about: '關於我', contact: '聯絡我',
-    stack: '技術工具',
+    stack: '技術工具', portfolio: '作品集',
     profession: '前端工程師／UI 設計師',
     projectDetails: (title) => `查看「${title}」的詳細內容`,
     filters: { all: '全部', personal: '個人專案', ui: '介面設計', system: '系統開發' },
@@ -158,7 +158,7 @@ export const locales = {
       ['新創公司', '拍賣應用程式的 UI／UX 設計'],
     ],
     skillGroups: { Frontend: '前端', Frameworks: '框架與函式庫', Backend: '後端', Cloud: '雲端', Design: '設計' },
-    meta: 'suu_portfolio 介紹開發專案與工作經歷',
+    meta: 'Suu 的作品集，介紹開發專案與工作經歷',
   },
 };
 
@@ -176,6 +176,7 @@ export function readLanguage() {
 
 export function applyLanguage(language) {
   document.documentElement.lang = language;
+  document.title = `Suu — ${locales[language].portfolio}`;
   document.querySelector('meta[name="description"]').content = locales[language].meta;
   try {
     localStorage.setItem(storageKey, language);
