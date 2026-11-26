@@ -6,6 +6,10 @@ import { applyLanguage, languages, locales, readLanguage } from './locales';
 import { Profile, Stack } from './profile';
 import './style.css';
 
+function projectMediaUrl(path) {
+  return `${import.meta.env.BASE_URL}${path.slice(1)}`;
+}
+
 function ProjectDescription({ project, className, detail = false }) {
   return (
     <p className={className}>
@@ -49,7 +53,7 @@ function ProjectDialog({ project, onClose, copy }) {
             )}
           </div>
         )}
-        {media?.type === 'image' && <img className="detail-image" src={`${import.meta.env.BASE_URL}${media.src.slice(1)}`} alt={media.label} />}
+        {media?.type === 'image' && <img className="detail-image" src={projectMediaUrl(media.src)} alt={media.label} />}
         {media?.type === 'video' && (
           <video
             key={media.src}
@@ -62,14 +66,14 @@ function ProjectDialog({ project, onClose, copy }) {
             playsInline
             preload="metadata"
             aria-label={media.label}
-            src={`${import.meta.env.BASE_URL}${media.src.slice(1)}`}
+            src={projectMediaUrl(media.src)}
           />
         )}
         {showPhoneScreens && (
           <ul className="phone-screens" tabIndex={0} aria-label={copy.gallery}>
             {phoneScreens.map((item) => (
               <li key={item.src}>
-                <img src={item.src} alt={item.label} />
+                <img src={projectMediaUrl(item.src)} alt={item.label} />
               </li>
             ))}
           </ul>
@@ -139,10 +143,10 @@ function ProjectCard({ project, onOpen, copy, featured }) {
       <Preview className={`preview ${project.id}`} {...openProps}>
         {project.coverImages ? (
           <div className="project-cover-gallery" aria-hidden="true">
-            {project.coverImages.map((src) => <img key={src} src={`${import.meta.env.BASE_URL}${src.slice(1)}`} alt="" loading="lazy" />)}
+            {project.coverImages.map((src) => <img key={src} src={projectMediaUrl(src)} alt="" loading="lazy" />)}
           </div>
         ) : cover ? (
-          <img className="project-cover" src={`${import.meta.env.BASE_URL}${cover.slice(1)}`} alt="" loading="lazy" />
+          <img className="project-cover" src={projectMediaUrl(cover)} alt="" loading="lazy" />
         ) : project.previewIcons ? (
           <div className="project-preview-icons" aria-hidden="true">
             {project.previewIcons.map((icon) => (
@@ -151,7 +155,7 @@ function ProjectCard({ project, onOpen, copy, featured }) {
           </div>
         ) : video ? (
           <div className="film" aria-hidden="true">
-            <video muted playsInline preload="metadata" src={`${import.meta.env.BASE_URL}${video.src.slice(1)}`} />
+            <video muted playsInline preload="metadata" src={projectMediaUrl(video.src)} />
             <span className="play">▶</span>
           </div>
         ) : (
