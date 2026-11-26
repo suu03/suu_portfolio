@@ -37,7 +37,7 @@ export function Profile({ copy }) {
       <div data-scroll-reveal>
         <h2 className="display-title" id="about-title" lang="en" data-scroll-reveal>About</h2>
         <h3>{copy.profession}</h3>
-        <p>{copy.biography}</p>
+        <p className="biography">{copy.biography}</p>
       </div>
       <div data-scroll-reveal>
         <h3>{copy.experience}</h3>
