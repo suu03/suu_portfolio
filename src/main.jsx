@@ -179,6 +179,7 @@ function App() {
   const [projectId, setProjectId] = useState(null);
   const [filter, setFilter] = useState("all");
   const main = useRef(null);
+  const languageControl = useRef(null);
   const copy = locales[language];
   const projects = getProjects(language);
   const project = projects.find((item) => item.id === projectId);
@@ -196,6 +197,15 @@ function App() {
   useEffect(() => {
     applyLanguage(language);
   }, [language]);
+
+  useEffect(() => {
+    const control = languageControl.current;
+    const closeOnOutsidePress = (event) => {
+      if (control.open && !control.contains(event.target)) control.open = false;
+    };
+    document.addEventListener('pointerdown', closeOnOutsidePress);
+    return () => document.removeEventListener('pointerdown', closeOnOutsidePress);
+  }, []);
 
   useEffect(() => {
     if (typeof IntersectionObserver !== "function") return;
@@ -227,8 +237,12 @@ function App() {
           </nav>
           <details
             className="language-control"
+            ref={languageControl}
             onBlur={(event) => {
-              if (!event.currentTarget.contains(event.relatedTarget)) event.currentTarget.open = false;
+              // A touch can blur the summary without moving focus to the tapped option.
+              if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) {
+                event.currentTarget.open = false;
+              }
             }}
             onKeyDown={(event) => {
               if (event.key !== 'Escape' || !event.currentTarget.open) return;
