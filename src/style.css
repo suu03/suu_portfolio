@@ -257,7 +257,8 @@ dialog::backdrop { background: #382318bb; backdrop-filter: blur(6px); }
   .timeline li { grid-template-columns: 1fr; gap: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+  :not(.hero-title, .hero-title > span, .name-underline path), *::before, *::after { animation: none !important; }
 }
 .timeline li > span { align-self: center; color: var(--muted); font-size: .875rem; }
 .stack { padding-block: clamp(40px, 6vw, 80px); }
@@ -280,18 +281,19 @@ dialog::backdrop { background: #382318bb; backdrop-filter: blur(6px); }
 .skill-list li:hover { color: var(--hover-color); }
 .contact-links a:is(:hover, :focus-visible) { transform: scale(1.08); }
 
+.hero-title {
+  --title-reveal-duration: 1.6s;
+  --title-reveal-delay: .25s;
+  animation: reveal .85s var(--ease) .08s both;
+}
+.hero-title > span { animation: hero-title-reveal var(--title-reveal-duration) ease-out var(--title-reveal-delay) backwards; }
+.name-underline path {
+  stroke-dasharray: 1 1.02;
+  animation: name-underline-reveal .8s ease-out calc(var(--title-reveal-delay) + var(--title-reveal-duration)) both;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .contact-links a { transition: transform .2s ease; }
-  .hero-title {
-    --title-reveal-duration: 1.6s;
-    --title-reveal-delay: .25s;
-    animation: reveal .85s var(--ease) .08s both;
-  }
-  .hero-title > span { animation: hero-title-reveal var(--title-reveal-duration) ease-out var(--title-reveal-delay) backwards; }
-  .name-underline path {
-    stroke-dasharray: 1 1.02;
-    animation: name-underline-reveal .8s ease-out calc(var(--title-reveal-delay) + var(--title-reveal-duration)) both;
-  }
   [data-scroll-reveal="entered"]:not(:focus-within) { animation: scroll-reveal .65s var(--ease); }
   .display-title[data-scroll-reveal="entered"] { animation: title-reveal 1.4s var(--ease); }
 }
