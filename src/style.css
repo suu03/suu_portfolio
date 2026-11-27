@@ -192,8 +192,13 @@ button.preview:hover :is(.project-type, .project-preview-icons) { transform: sca
 .project-info h3 { font-size: clamp(1.1rem, 1.9vw, 1.65rem); font-weight: 500; line-height: 1.25; margin: 0 0 6px; }
 .about p { color: var(--muted); line-height: 1.9; }
 .about .biography { white-space: pre-line; }
-.about { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; }
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px clamp(56px, 6vw, 88px);
+}
 .about h3 { margin: 26px 0 6px; font-size: 1.12rem; }
+#about-title + h3 { margin-top: 36px; }
 .timeline { margin: 0; padding: 0; list-style: none; }
 .timeline li { display: grid; grid-template-columns: 9rem 1fr; gap: 12px; padding-block: 12px; border-bottom: 1px solid var(--line); }
 .timeline li:last-child { border-bottom: 0; }
